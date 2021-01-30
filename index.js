@@ -4,15 +4,16 @@
 
 
 
+
 // ------------------ HOSTING --------------------
 
-var letraDNI = "";
+var $letraDNI = "";
 
 var numeroDNI = "12345678";
 
-var formatoCorrecto = false;
+var $$formatoCorrecto = false;
 
-const letrasDni = [
+const _letrasDni = [
     "T",
     "R",
     "W",
@@ -40,10 +41,13 @@ const letrasDni = [
 
 
 
+
+
 //-----------------    FUNCIONES    ----------------
 
-// Comprueba que 'num' sólo contenga cifras, que sea un número de ocho dígitos, entero, y positivo, en cuyo caso, devuelve 'true'
-// En caso contrario muestra una alerta y devuelve 'false'
+/*  Comprueba que 'num' sólo contenga cifras, que sea un número de ocho dígitos, 
+    entero, y positivo, en cuyo caso, devuelve 'true'.
+    En caso contrario muestra una alerta y devuelve 'false'.    */
 function chequearNumeroIntroducido(num) {
     if (
         isNaN(Number(num)) || // comprueba que únicamente contenga números
@@ -54,7 +58,7 @@ function chequearNumeroIntroducido(num) {
         alert(
             "El DNI debe tener ocho cifras y contener tan sólo caracteres numéricos."
         );
-        return false; // esto hará que 'formatoCorrecto' sea 'false'
+        return false; // esto hará que '$$formatoCorrecto' sea 'false'
     }
     return true;
 }
@@ -63,7 +67,7 @@ function chequearNumeroIntroducido(num) {
 
 // Algoritmo para calcular la letra del DNI a partir del número
 function calculaLetra(num) {
-    letra = letrasDni[num % 23];
+    letra = _letrasDni[num % 23];
     return letra;
 }
 
@@ -74,13 +78,23 @@ function calculaLetra(num) {
 
 do {
     numeroDNI = prompt("Introduzca los dígitos de su DNI:");
-    formatoCorrecto = chequearNumeroIntroducido(numeroDNI);
-} while (!formatoCorrecto); // hasta que la funcion 'chequearNumeroIntroducido' no devuelva 'true' se estará repitiendo el bucle 'do...while' que contiene el prompt para la entrada de datos
+    $$formatoCorrecto = chequearNumeroIntroducido(numeroDNI);
+} while (!$$formatoCorrecto);
+/* hasta que la funcion 'chequearNumeroIntroducido' no devuelva
+ 'true' se estará repitiendo el bucle 'do...while' que contiene 
+ el prompt para la entrada de datos */
 {
 }
 
 
 
+
 // ---------------- CÁLCULO DE LA LETRA E IMPRESIÓN -------
 
-console.log("Su DNI completo es: " + numeroDNI + calculaLetra(numeroDNI));
+$letraDNI = calculaLetra(numeroDNI);
+
+console.log(`Su DNI completo es: ${numeroDNI}${$letraDNI}`);
+
+
+
+// end
